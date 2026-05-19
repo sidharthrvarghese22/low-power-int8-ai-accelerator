@@ -46,6 +46,8 @@ docs/        -> Documentation
 - CNN accelerator
 - Larger systolic arrays
 - ASIC synthesis flow
+- 
+![Architecture](screenshots/accelerator_architecture.png)
 
 ## Author
 
