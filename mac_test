@@ -1,0 +1,55 @@
+#! /opt/homebrew/Cellar/icarus-verilog/13.0/bin/vvp
+:ivl_version "13.0 (stable)" "(v13_0)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/system.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/vhdl_sys.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/vhdl_textio.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/v2005_math.vpi";
+:vpi_module "/opt/homebrew/Cellar/icarus-verilog/13.0/lib/ivl/va_math.vpi";
+S_0x13a604080 .scope module, "mac_unit_tb" "mac_unit_tb" 2 3;
+ .timescale -9 -12;
+v0x600002c6c990_0 .var "A", 7 0;
+v0x600002c6ca20_0 .var "B", 7 0;
+v0x600002c6cab0_0 .var "C", 15 0;
+v0x600002c6cb40_0 .net "Y", 15 0, L_0x600002f6c1e0;  1 drivers
+S_0x13a6041f0 .scope module, "uut" "mac_unit" 2 11, 3 1 0, S_0x13a604080;
+ .timescale 0 0;
+    .port_info 0 /INPUT 8 "A";
+    .port_info 1 /INPUT 8 "B";
+    .port_info 2 /INPUT 16 "C";
+    .port_info 3 /OUTPUT 16 "Y";
+v0x600002c6c480_0 .net "A", 7 0, v0x600002c6c990_0;  1 drivers
+v0x600002c6c510_0 .net "B", 7 0, v0x600002c6ca20_0;  1 drivers
+v0x600002c6c5a0_0 .net "C", 15 0, v0x600002c6cab0_0;  1 drivers
+v0x600002c6c630_0 .net "Y", 15 0, L_0x600002f6c1e0;  alias, 1 drivers
+v0x600002c6c6c0_0 .net *"_ivl_0", 15 0, L_0x600002f6c000;  1 drivers
+L_0x150068010 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x600002c6c750_0 .net *"_ivl_3", 7 0, L_0x150068010;  1 drivers
+v0x600002c6c7e0_0 .net *"_ivl_4", 15 0, L_0x600002f6c0a0;  1 drivers
+L_0x150068058 .functor BUFT 1, C4<00000000>, C4<0>, C4<0>, C4<0>;
+v0x600002c6c870_0 .net *"_ivl_7", 7 0, L_0x150068058;  1 drivers
+v0x600002c6c900_0 .net *"_ivl_9", 15 0, L_0x600002f6c140;  1 drivers
+L_0x600002f6c000 .concat [ 8 8 0 0], v0x600002c6c990_0, L_0x150068010;
+L_0x600002f6c0a0 .concat [ 8 8 0 0], v0x600002c6ca20_0, L_0x150068058;
+L_0x600002f6c140 .arith/mult 16, L_0x600002f6c000, L_0x600002f6c0a0;
+L_0x600002f6c1e0 .arith/sum 16, L_0x600002f6c140, v0x600002c6cab0_0;
+    .scope S_0x13a604080;
+T_0 ;
+    %pushi/vec4 2, 0, 8;
+    %store/vec4 v0x600002c6c990_0, 0, 8;
+    %pushi/vec4 3, 0, 8;
+    %store/vec4 v0x600002c6ca20_0, 0, 8;
+    %pushi/vec4 4, 0, 16;
+    %store/vec4 v0x600002c6cab0_0, 0, 16;
+    %delay 10000, 0;
+    %vpi_call 2 26 "$display", "Y = %d", v0x600002c6cb40_0 {0 0 0};
+    %vpi_call 2 28 "$finish" {0 0 0};
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "tb/mac_unit_tb.v";
+    "rtl/mac_unit.v";
